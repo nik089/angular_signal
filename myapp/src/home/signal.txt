@@ -1,0 +1,101 @@
+1. What Are Signals?
+    Signals are a reactive data structure in Angular.
+    They allow automatic change tracking and re-rendering when the value changes.
+    They help avoid manual calls like ChangeDetectorRef.detectChanges or imperatively managing observable subscriptions. 
+
+    A Signal is a reactive value — a variable that:
+        stores data
+        notifies Angular automatically when it changes
+        triggers only the parts of UI that depend on it
+
+=====================================================================================================
+2. Signals vs Normal Component Properties
+| Feature                  | Normal Properties | Angular Signals |                |
+| ------------------------ | ----------------- | --------------- | -------------- |
+| Reactive updates         | No                | Yes             |                |
+| Auto re-render           | No                | Yes             |                |
+| Change Detection Support | Manual/Default    | Built-in        |                |
+| Good for performance     | Limited           | Better tracking |  |
+=====================================================================================================
+    Normal class properties don’t inform Angular when they change.
+    Signals are designed to be observable, so Angular updates the UI automatically when signals change.
+
+==========================================================================================================
+4. Why Use Signals?
+    Better reactivity
+        UI updates automatically when the signal changes.
+
+    Performance
+        Angular can optimize re-renders, skipping inexpensive tasks.
+
+    Cleaner code
+        No need to implement events like EventEmitter or manually trigger change detection.
+
+==============================================================================================
+5  Why did Angular introduce Signals?
+
+    Angular had two main problems:
+    ❌ Problem 1 — Change Detection is expensive
+
+    Angular checks the entire component tree by default.
+
+    Signals allow fine-grained updates:
+    only components that depend on the changed signal update.
+================================================================================================
+
+❌ Problem 2 — Too much RxJS for simple state
+
+    RxJS is powerful but complex for basic counters, toggles, forms, etc.
+    Signals provide simple reactivity without:
+        subscriptions
+        unsubscribe
+        async pipes
+
+==================================================================================================
+6. Types of Signal
+        1. signal() — basic writable signal
+
+                name = signal('Nitesh');
+                name();           // read
+                name.set('Alex'); // write
+                name.update(v => v.toUpperCase());
+       
+        2 computed() — derived (read-only) signals.
+
+                first = signal('Nitesh');
+                last  = signal('Yadav');
+                full = computed(() => `${first()} ${last()}`); 
+
+                full() always updates automatically when first or last changes.
+
+        3. effect() — run side-effects when signals change.
+                      Great for logging, calling APIs, storing to localStorage, etc.
+
+                      effect(() => {
+                        console.log('Counter changed:', count());
+                        }); 
+                         
+                        It runs every time count() updates.
+                        Effects should NOT update the same signal they depend on (creates loops).
+====================================================================================================
+Signals vs Observables (key differences);
+
+| Feature       | Signals             | Observables                 |
+| ------------- | ------------------- | --------------------------- |
+| Value stored  | Yes                 | No (stream emissions)       |
+| Pull / Push   | Pull (read anytime) | Push (emits asynchronously) |
+| Subscriptions | No                  | Yes                         |
+| Unsubscribe   | Not needed          | Required                    |
+| Async work    | Weak                | Excellent                   |
+| Performance   | Very good           | Depends                     |
+
+=========================================================================================================
+set() Vs update();
+=====================
+set() = replace
+update() = modify using previous value
+
+
+
+
+
