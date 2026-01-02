@@ -1,0 +1,13 @@
+<header class="header">
+  <div class="container-wrapper">
+    <div class="brand">
+      <span class="title">Angular Signal App</span>
+    </div>
+    <button class="menu-btn" (click)="toggleMenu()">
+      ☰
+    </button>
+      <nav  class="nav" [class.open]="mobileOpen">
+      <a routerLink="/counter" routerLinkActive="active">Counter</a>
+    </nav>
+  </div>
+</header>

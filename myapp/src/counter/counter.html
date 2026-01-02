@@ -1,0 +1,14 @@
+<section>
+  <h1 class="text-center">Signal Counter</h1>
+  <div class="counter-wrapper">
+    <div class="counter-card">
+      <h2>Counter</h2>
+      <div class="counter-box">
+        <button (click)="decrement()">−</button>
+        <input type="text" [value]="count()" readonly />
+        <button (click)="increment()">+</button>
+      </div>
+      <button class="reset-btn" (click)="reset()">Reset</button>
+    </div>
+  </div>
+</section>

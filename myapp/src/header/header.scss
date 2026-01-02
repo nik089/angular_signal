@@ -1,0 +1,101 @@
+.header {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #fff;
+  padding: 10px 0;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  .container-wrapper {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: .4px;
+    }
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+
+    a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all .2s ease;
+      cursor: pointer;
+
+      &:hover {
+        color: #fff;
+      }
+
+      &.active {
+        color: #38bdf8;
+        border-bottom: 2px solid #38bdf8;
+      }
+    }
+
+    .login-btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 1px solid #38bdf8;
+      background: transparent;
+      color: #38bdf8;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .2s ease;
+
+      &:hover {
+        background: #38bdf8;
+        color: #0f172a;
+      }
+    }
+  }
+
+  .menu-btn {
+    display: none;
+    font-size: 24px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .header {
+    .menu-btn {
+      display: block;
+    }
+
+    .nav {
+      position: absolute;
+      top: 62px;
+      right: 0;
+      left: 0;
+      background: #020617;
+      flex-direction: column;
+      padding: 14px 0;
+      gap: 14px;
+      display: none;
+
+      &.open {
+        display: flex;
+      }
+
+      a,
+      .login-btn {
+        text-align: center;
+      }
+    }
+  }
+}
