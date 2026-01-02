@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
@@ -9,6 +9,12 @@ import { Component, signal } from '@angular/core';
 })
 export class Counter {
  count = signal(0);
+ 
+ constructor(){
+  effect(()=>{
+    console.log("counter check", this.count())
+  })
+ }
  
   increment() {
     this.count.set(this.count() + 1)
