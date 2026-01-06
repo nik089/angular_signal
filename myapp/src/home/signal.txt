@@ -68,6 +68,9 @@
 
                 full() always updates automatically when first or last changes.
 
+                => sirf read only hote hai and ham forcefully chnage nahi kar sakte. but enki depencies kisi aur
+                   signal ke uper hai to ye chnage ho jate hai.
+
         3. effect() — run side-effects when signals change.
                       Great for logging, calling APIs, storing to localStorage, etc.
 

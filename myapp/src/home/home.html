@@ -1,32 +1,116 @@
 <section class="text-center mb-4">
-  <h3>Home is Working</h3>
+  <h3>Set vs Update Method</h3>
+  <div class="container">
+    <div class="row g-4">
+      <!-- LEFT COLUMN (Update Method) -->
+      <div class="col-md-6">
+        <div class="card shadow-sm p-3">
+          <h5 class="mb-3 text-center">Update Method (update())</h5>
+          <div class="d-flex justify-content-between align-items-center">
+            <button class="btn btn-primary" (click)="updateData()">Update</button>
+            <ul class="mb-0 list-unstyled">
+              <strong>Updated Value:</strong>
+              @for (item of user(); track item) {
+              <li>{{ item }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN (Set Method) -->
+      <div class="col-md-6">
+        <div class="card shadow-sm p-3">
+          <h5 class="mb-3 text-center">Set Method (set())</h5>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <button class="btn btn-success" (click)="setData()">Set</button>
+            <p class="mb-0"><strong>New Set Value:</strong> {{ data1() }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="container">
+<section class="container mt-4">
+  <h2 class="text-center mb-4">Computed Signal Demo</h2>
   <div class="row g-4">
-    <!-- LEFT COLUMN (Update Method) -->
+    <!-- LEFT: Without Computed -->
     <div class="col-md-6">
       <div class="card shadow-sm p-3">
-        <h5 class="mb-3 text-center">Update Method (update())</h5>
+        <h5 class="text-center mb-3">Without Computed</h5>
+
+        <p>
+          Start with <strong>x = 10</strong> and <strong>y = 20</strong>. We calculate
+          <strong>z = x + y</strong>. Now change <strong>x = 100</strong> — notice that
+          <strong>z does NOT update</strong>
+          unless we calculate it again manually.
+        </p>
+
         <div class="d-flex justify-content-between align-items-center">
-          <button class="btn btn-primary" (click)="updateData()">Update</button>
+          <button class="btn btn-primary" (click)="showValue()">Show Value</button>
+
           <ul class="mb-0 list-unstyled">
-            <li><strong>Updated Value:</strong> {{ user() }}</li>
+            <li><strong>Value:</strong> {{ z }}</li>
           </ul>
         </div>
       </div>
     </div>
 
-    <!-- RIGHT COLUMN (Set Method) -->
+    <!-- RIGHT: With Computed -->
     <div class="col-md-6">
       <div class="card shadow-sm p-3">
-        <h5 class="mb-3 text-center">Set Method (set())</h5>
+        <h5 class="text-center mb-3">With Computed</h5>
+
+        <p>
+          Start with <strong>x1 = 10</strong> and <strong>y1 = 20</strong>. Here
+          <strong>z1 is a computed signal = x1 + y1</strong>. When we change
+          <strong>x1 = 100</strong>, <strong>z1 updates automatically</strong> because it is
+          computed.
+        </p>
 
         <div class="d-flex justify-content-between align-items-center">
-          <button class="btn btn-success" (click)="setData()">Set</button>
-          <p class="mb-0"><strong>New Set Value:</strong> {{ data1() }}</p>
+          <button class="btn btn-success" (click)="showValue1()">Show Value</button>
+
+          <ul class="mb-0 list-unstyled">
+            <li><strong>Value:</strong> {{ z1() }}</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
+<section class="container mt-4">
+  <h2 class="text-center mb-4">Effect in Signals</h2>
+
+  <div class="row g-4">
+    <!-- LEFT: Counter -->
+    <div class="col-md-6">
+      <div class="card shadow-sm p-3">
+        <h5 class="text-center mb-3">Counter</h5>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-primary" (click)="increment()">Increment</button>
+
+          <ul class="mb-0 list-unstyled">
+            <li><strong>Count:</strong> {{ count() }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Effect Logs -->
+    <div class="col-md-6">
+      <div class="card shadow-sm p-3">
+        <h5 class="text-center mb-3">Effect Output</h5>
+
+        <p>This shows what the <strong>effect()</strong> is doing whenever the count changes.</p>
+
+        <ul class="mb-0 list-unstyled">
+          <li><strong>Message:</strong> {{ message() }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
