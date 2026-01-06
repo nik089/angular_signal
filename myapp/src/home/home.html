@@ -1,2 +1,32 @@
-<section class="text-center">Home is Working</section>
+<section class="text-center mb-4">
+  <h3>Home is Working</h3>
+</section>
 
+<div class="container">
+  <div class="row g-4">
+    <!-- LEFT COLUMN (Update Method) -->
+    <div class="col-md-6">
+      <div class="card shadow-sm p-3">
+        <h5 class="mb-3 text-center">Update Method (update())</h5>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-primary" (click)="updateData()">Update</button>
+          <ul class="mb-0 list-unstyled">
+            <li><strong>Updated Value:</strong> {{ user() }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN (Set Method) -->
+    <div class="col-md-6">
+      <div class="card shadow-sm p-3">
+        <h5 class="mb-3 text-center">Set Method (set())</h5>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-success" (click)="setData()">Set</button>
+          <p class="mb-0"><strong>New Set Value:</strong> {{ data1() }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

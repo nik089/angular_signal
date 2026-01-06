@@ -1,7 +1,7 @@
 1. What Are Signals?
     Signals are a reactive data structure in Angular.
     They allow automatic change tracking and re-rendering when the value changes.
-    They help avoid manual calls like ChangeDetectorRef.detectChanges or imperatively managing observable subscriptions. 
+    They help avoid manual calls like ChangeDetectorRef.detectChanges or imperatively managing observable subscriptions.
 
     A Signal is a reactive value — a variable that:
         stores data
@@ -59,12 +59,12 @@
                 name();           // read
                 name.set('Alex'); // write
                 name.update(v => v.toUpperCase());
-       
+
         2 computed() — derived (read-only) signals.
 
                 first = signal('Nitesh');
                 last  = signal('Yadav');
-                full = computed(() => `${first()} ${last()}`); 
+                full = computed(() => `${first()} ${last()}`);
 
                 full() always updates automatically when first or last changes.
 
@@ -73,8 +73,8 @@
 
                       effect(() => {
                         console.log('Counter changed:', count());
-                        }); 
-                         
+                        });
+
                         It runs every time count() updates.
                         Effects should NOT update the same signal they depend on (creates loops).
 ====================================================================================================
@@ -94,8 +94,38 @@ set() Vs update();
 =====================
 set() = replace
 update() = modify using previous value
+===========================================================================================================
 
 
 
+1️⃣ Writable Signal (you can modify it)
+    Created using signal().
+
+        import { signal } from '@angular/core';
+        const counter = signal(0);
+
+    Read value
+        counter();   // 0;
+
+    Update value
+        counter.set(5);
+        counter.update(c => c + 1);
+
+            Use when:
+
+                    a form changes
+                    user interacts with the UI
+                    API updates data
+                    component controls its own state
+
+
+2️⃣ Readable Signal (cannot be modified externally)
+
+        const _counter = signal(0);         // writable (private)
+        export const counter = _counter.asReadonly();   // readable (public)
+
+=================================================================================
+set vs update
+==> When signal value depend on previous value then used  update other used used set
 
 

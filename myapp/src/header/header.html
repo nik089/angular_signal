@@ -3,12 +3,11 @@
     <div class="brand">
       <span class="title">Angular Signal App</span>
     </div>
-    <button class="menu-btn" (click)="toggleMenu()">
-      ☰
-    </button>
+    <button class="menu-btn" (click)="toggleMenu()">☰</button>
     <nav class="nav" [class.open]="mobileOpen">
       <a routerLink="/home" routerLinkActive="active">Home</a>
       <a routerLink="/counter" routerLinkActive="active">Counter</a>
+      <a routerLink="/ngrx" routerLinkActive="active">NGRX</a>
     </nav>
   </div>
 </header>
